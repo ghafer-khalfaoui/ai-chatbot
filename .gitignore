@@ -1,0 +1,20 @@
+# Python Virtual Environment
+venv/
+env/
+
+# TensorFlow/Keras Models and related binaries
+*.h5
+*.hdf5
+tf_model.h5
+*.dll
+*.so
+*.pyd
+
+# IDE and OS files
+.vscode/
+.idea/
+__pycache__/
+*.pyc
+
+# Database files
+*.sqlite3

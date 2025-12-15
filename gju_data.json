@@ -1,0 +1,581 @@
+{
+  "instructors": [
+    {
+      "name": "Prof. Feras Al-Hawari",
+      "title": "Professor",
+      "office_location": "M 214",
+      "phone": "+962 6 4294444 Ext. 4101",
+      "email": "feras.al-hawari@gju.edu.jo",
+      "status": null
+    },
+    {
+      "name": "Prof. Rami Alazrai",
+      "title": "Professor",
+      "office_location": "M 213",
+      "phone": "+962 6 4294444 Ext. 4436",
+      "email": "rami.alazrai@gju.edu.jo",
+      "status": "on leave"
+    },
+    {
+      "name": "Dr. Ala’ Khalifeh",
+      "title": "Associate Professor",
+      "office_location": "M 215",
+      "phone": "+962 6 4294444 Ext. 4126",
+      "email": "ala.khalifeh@gju.edu.jo",
+      "status": null
+    },
+    {
+      "name": "Dr. Ahmad Barghash",
+      "title": "Associate Professor",
+      "office_location": "M314",
+      "phone": "+962 6 4294444",
+      "email": "ahmad.barghash@gju.edu.jo",
+      "status": null
+    },
+    {
+      "name": "Dr. Amani Abu Jabal",
+      "title": "Chair, Assistant Professor",
+      "office_location": "M316",
+      "phone": "+962 6 4294444",
+      "email": "amani.abujabal@gju.edu.jo",
+      "status": null
+    },
+    {
+      "name": "Prof. Nabil Ayoub",
+      "title": "Professor",
+      "office_location": "H209",
+      "phone": "+962 6 4294444",
+      "email": "nabil.ayoub@gju.edu.jo",
+      "status": null
+    },
+    {
+      "name": "Dr. Abdullah Alfarrarjeh",
+      "title": "Vice Dean, Assistant Professor",
+      "office_location": "M309",
+      "phone": "+962 6 4294444",
+      "email": "abdullah.alfarrarjeh@gju.edu.jo",
+      "status": null
+    },
+    {
+      "name": "Dr. Mohammad AlQudah",
+      "title": "Chair, Associate Professor",
+      "office_location": "H307",
+      "phone": "+962 6 4294444 Ext. 4752",
+      "email": "mohammad.alqudah@gju.edu.jo",
+      "status": null
+    },
+    {
+      "name": "Dr. Hussein Al-Ta'ani",
+      "title": "Associate Professor",
+      "office_location": "H407",
+      "phone": "+962 6 4294444 Ext. 4241",
+      "email": "hussein.al-taani@gju.edu.jo",
+      "status": "on leave"
+    },
+    {
+      "name": "Dr. Omar Al-Omari",
+      "title": "Associate Professor",
+      "office_location": "H414",
+      "phone": "+962 6 4294444 Ext. 4257",
+      "email": "omar.al-omari@gju.edu.jo",
+      "status": "on leave"
+    },
+    {
+      "name": "Prof. Dhiah el Diehn I. Abou-Tair",
+      "title": "Professor",
+      "office_location": "M311",
+      "phone": "+962 6 4294444 Ext. 4132",
+      "email": "dhiah.abou-tair@gju.edu.jo",
+      "status": null
+    },
+    {
+      "name": "Prof. Dia Zeidan",
+      "title": "Professor",
+      "office_location": "H309",
+      "phone": "+962 6 4294444",
+      "email": "dia.zeidan@gju.edu.jo",
+      "status": null
+    },
+    {
+      "name": "Prof. Inshad Jum'h",
+      "title": "Professor",
+      "office_location": "H409",
+      "phone": "+962 6 4294444 Ext. 4242",
+      "email": "inshad.jumh@gju.edu.jo",
+      "status": "on leave"
+    },
+    {
+      "name": "Dr. Ismail Hababeh",
+      "title": "Associate Professor",
+      "office_location": "M319",
+      "phone": "+962 6 4294444 Ext. 4130",
+      "email": "ismail.hababeh@gju.edu.jo",
+      "status": null
+    },
+    {
+      "name": "Prof. Mohammad Abudayah",
+      "title": "Professor",
+      "office_location": "H413 / H406",
+      "phone": "+962 6 4294444 Ext. 4707",
+      "email": "mohammad.abudayah@gju.edu.jo",
+      "status": null
+    },
+    {
+      "name": "Dr. Sameer Arabasi",
+      "title": "Associate Professor",
+      "office_location": "H408",
+      "phone": "+962 6 4294444 Ext. 4233",
+      "email": "sameer.arabasi@gju.edu.jo",
+      "status": "on leave"
+    },
+    {
+      "name": "Dr. Omar Hiari",
+      "title": "Associate Professor",
+      "office_location": "M 221",
+      "phone": "+962 6 4294444 Ext. 4123",
+      "email": "omar.hiari@gju.edu.jo",
+      "status": "on leave"
+    },
+    {
+      "name": "Dr. Samer Nofal",
+      "title": "Associate Professor",
+      "office_location": "M317",
+      "phone": "+962 6 4294444 Ext. 4131",
+      "email": "samer.nofal@gju.edu.jo",
+      "status": "on leave"
+    },
+    {
+      "name": "Dr. Suhad Sbeih",
+      "title": "Assistant Professor",
+      "office_location": "H511",
+      "phone": "+962 6 4294444 Ext. 4255",
+      "email": "suhad.sbeih@gju.edu.jo",
+      "status": null
+    },
+    {
+      "name": "Prof. Husam Abu-Safe",
+      "title": "Professor",
+      "office_location": "H410",
+      "phone": "+962 6 4294444 Ext. 4753",
+      "email": "husam.abu-safe@gju.edu.jo",
+      "status": null
+    },
+    {
+      "name": "Dr. Ammar Gharaibeh",
+      "title": "Dean, Associate Professor",
+      "office_location": "M 220",
+      "phone": "+962 6 4294444 Ext. 4133",
+      "email": "ammar.gharaibeh@gju.edu.jo",
+      "status": null
+    },
+    {
+      "name": "Mahmoud AlGharram",
+      "title": "Instructor",
+      "office_location": "H207",
+      "phone": "+962 6 4294444",
+      "email": "mahmoud.algharram@gju.edu.jo",
+      "status": null
+    },
+    {
+      "name": "Anwar Boustanji",
+      "title": "Instructor",
+      "office_location": "H313",
+      "phone": "+962 6 4294444",
+      "email": "anwar.boustanji@gju.edu.jo",
+      "status": null
+    },
+    {
+      "name": "Laith Hawawsheh",
+      "title": "Instructor",
+      "office_location": "H109",
+      "phone": "+962 6 4294444 Ext. 4222",
+      "email": "laith.hawawsheh@gju.edu.jo",
+      "status": null
+    },
+    {
+      "name": "Prof. Mohammad AlDaoud",
+      "title": "Professor",
+      "office_location": "M 210",
+      "phone": "+962 6 4294444 Ext. 4124",
+      "email": "mohammad.aldaoud@gju.edu.jo",
+      "status": "on Leave"
+    },
+    {
+      "name": "Prof. Sahel Alouneh",
+      "title": "Professor",
+      "office_location": null,
+      "phone": "+962 6 4294444 Ext. 4100",
+      "email": "sahel.alouneh@gju.edu.jo",
+      "status": null
+    },
+    {
+      "name": "Prof. Salem Al-Agtash",
+      "title": "Professor",
+      "office_location": "M219",
+      "phone": "+962 6 4294444 Ext. 4129",
+      "email": "salem.al-agtash@gju.edu.jo",
+      "status": null
+    },
+    {
+      "name": "Dr. Nesreen Al-Sharman",
+      "title": "Assistant Professor",
+      "office_location": null,
+      "phone": "+962 6 4294444",
+      "email": "nesreen.al-sharman@gju.edu.jo",
+      "status": null
+    },
+    {
+      "name": "Dr. Mahmoud Al-Sarayreh",
+      "title": "Chair, Assistant Professor",
+      "office_location": "M 004",
+      "phone": "+962 6 4294444 Ext. 4143",
+      "email": "mahmoud.al-sarayreh@gju.edu.jo",
+      "status": null
+    },
+    {
+      "name": "Dr. Nadia AL-Rousan",
+      "title": "Full Time Lecturer",
+      "office_location": "M 208",
+      "phone": "+962 6 4294444",
+      "email": "nadia.al-rousan@gju.edu.jo",
+      "status": null
+    },
+    {
+      "name": "Dr. Rana Al-Mahmoud",
+      "title": "Assistant Professor",
+      "office_location": null,
+      "phone": "+962 6 4294444",
+      "email": "rana.al-mahmoud@gju.edu.jo",
+      "status": null
+    },
+    {
+      "name": "Mr. Abdullah Al-Heyari",
+      "title": "Lecturer",
+      "office_location": null,
+      "phone": "+962 6 4294444",
+      "email": "abdullah.al-heyari@gju.edu.jo",
+      "status": null
+    },
+    {
+      "name": "Mrs. Kholoud Nairoukh",
+      "title": "Lecturer",
+      "office_location": null,
+      "phone": "+962 6 4294444",
+      "email": "kholoud.nairoukh@gju.edu.jo",
+      "status": null
+    }
+  ],
+  "courses": [
+    {
+      "code": "ARB0099",
+      "name": "Elementary Arabic",
+      "hours": 3,
+      "desc": "This course aims to develop student's ability to read, comprehend, literary analyze, grammatically analyze, linguistically analyze, poetically analyze, and rhetorically analyze texts properly."
+    },
+    {
+      "code": "ENGL0098",
+      "name": "Elementary English",
+      "hours": 3,
+      "desc": "Students will focus on English at an elementary level through the receptive skills of reading and listening and the productive skills of writing and speaking."
+    },
+    {
+      "code": "ENGL0099",
+      "name": "Intermediate English",
+      "hours": 3,
+      "desc": "Students will focus on English at an intermediate level through the receptive skills of reading and listening and the productive skills of writing and speaking."
+    },
+    {
+      "code": "MATH0099",
+      "name": "Pre-Math",
+      "hours": 3,
+      "desc": "Remedial course for mathematics."
+    },
+    {
+      "code": "ARB100",
+      "name": "Arabic",
+      "hours": 3,
+      "desc": "This course aims to improve the student's competence in the various linguistic skills in terms of reading, comprehension, and taste."
+    },
+    {
+      "code": "ENGL1001",
+      "name": "Upper-Intermediate English",
+      "hours": 3,
+      "desc": "Students will analyze and produce essays with an emphasis on argumentation and persuasion working both independently and cooperatively to gather, evaluate, and synthesize necessary information."
+    },
+    {
+      "code": "ENGL1002",
+      "name": "Advanced English",
+      "hours": 3,
+      "desc": "This level focuses on a higher level of enhancement of their language. Students can address any audience, through delivering a persuasive speech, making an informative presentation, or analyzing controversial News through News Analysis."
+    },
+    {
+      "code": "NE101",
+      "name": "National Education",
+      "hours": 3,
+      "desc": "In this course you will be able to understand your rights and responsibilities as Jordanian citizen expand your knowledge about the frameworks, and processes that regulates citizen-state relationships."
+    },
+    {
+      "code": "MATH101",
+      "name": "Calculus I",
+      "hours": 3,
+      "desc": "This course introduces the student to the calculus of single-valued functions. Topics include: limits, continuity, rates of change, rules for differentiating, differentials and local linear approximations, maxima and minima problems, L'Hôpital's rule, related rates, logarithmic and implicit differentiation, inverse trigonometric and hyperbolic functions, Rolle 's Theorem, the mean-value theorem, and applications of derivatives and integrals."
+    },
+    {
+      "code": "MATH102",
+      "name": "Calculus II",
+      "hours": 3,
+      "desc": "Sequences and series, power series, convergence theorems: integral, ratio, and alternating - series tests, Polar coordinates, and functions, integration and differentiation of polar functions, Vectors in three-dimensional space, spherical and cylindrical coordinates, Vector-valued functions, Partial derivatives, Multiple integrals, Topics in vector calculus."
+    },
+    {
+      "code": "CS116",
+      "name": "Computing fundamentals",
+      "hours": 3,
+      "desc": "Basic computer skills, programming concepts, algorithms, variables and data types; arithmetic, logical, relational, Boolean, and assignment operators; simple input and output statements, selection structures, loop structures, single and multidimensional arrays, character strings, functions, data structures, pointers, input/output file operations."
+    },
+    {
+      "code": "CS1160",
+      "name": "Computing fundamentals lab",
+      "hours": 1,
+      "desc": "Lab session every week to offer hands-on experience on the topics that are covered in CS116."
+    },
+    {
+      "code": "CS117",
+      "name": "Object-Oriented Programming",
+      "hours": 3,
+      "desc": "Object Oriented Programming concepts, Classes, objects and data abstraction, constructors and destructors; object-oriented design, encapsulation and information hiding, abstraction and modularization, coupling and cohesion, sample design patterns; inheritance, class and type hierarchies, polymorphism, Abstract classes, Interfaces, Packages, Collection classes, Generics, streams and files, exception handling; unit testing and debugging, Application Programming Interfaces, Javadoc."
+    },
+    {
+      "code": "CS1170",
+      "name": "Object-Oriented Programming Lab",
+      "hours": 1,
+      "desc": "Lab session every week to enhance hands-on experience on topics that are theoretically covered in CS117."
+    },
+    {
+      "code": "CE212",
+      "name": "Digital Systems",
+      "hours": 3,
+      "desc": "Fundamentals of digital electronics, Binary number system; Boolean algebra, logic operations, algebra and gates, digital circuits analysis, gate-level and block level design of digital circuits, adders, subtractors, comparators, multiplexers, decoders, analysis, design and applications of sequential circuits: flip-flops, registers, counter, and their design procedures, RAM and ROM memory elements."
+    },
+    {
+      "code": "CE2120",
+      "name": "Digital Systems Lab",
+      "hours": 1,
+      "desc": "The course also includes 3-hours lab session every week to enhance hands-on experience on topics that are theoretically covered in the CE212 course, including basic logic gate experiments, combinational logic circuits experiments, and sequential logic circuits experiments."
+    },
+    {
+      "code": "EE317",
+      "name": "Linear Algebra",
+      "hours": 3,
+      "desc": "Systems of linear equations. Vector spaces and linear transformations. Independence, bases and dimensions, bases transformation. The fundamental fours spaces. Understand a matrix as a linear transformation relative to a bases of a vector space."
+    },
+    {
+      "code": "IE0121",
+      "name": "Probability and Statistics",
+      "hours": 3,
+      "desc": "Descriptive statistics, probability concepts, discrete and continuous random variables and distributions, joint probability distributions, covariance and correlation of random variables, point and interval estimation for single sample, sampling distributions, and statistical inference for single sample."
+    },
+    {
+      "code": "CS201",
+      "name": "Discrete Structures",
+      "hours": 3,
+      "desc": "Fundamental structures: Functions (surjections, injections, inverses, composition); relations (reflexivity, symmetry, transitivity, equivalence relations); sets (Venn diagrams, complements, Cartesian products, power sets); Basic logic: Propositional logic; logical connectives; truth tables; predicate logic; universal and existential quantification; Proof techniques: Notions of implication, direct proofs; proof by counterexample; proof by contraposition; proof by contradiction; mathematical induction; recursive mathematical definitions; Basics of counting: pigeonhole principle; permutations and combinations. Discrete probability: Finite probability spaces; conditional probability, independence Bayes' rule; random events; random integer variables; mathematical expectation."
+    },
+    {
+      "code": "CE201",
+      "name": "Computer Architecture and Organization",
+      "hours": 3,
+      "desc": "Basic computer organization, central processing unit, micro-program control and control unit, arithmetic processor, memory units, bus structures, interrupt structures. Taxonomies of computer architectures; addressing methods, programs control, processing units, I-O organization, arithmetic, main-memory organization, peripherals, microprocessor families, RISC architectures and multiprocessors."
+    },
+    {
+      "code": "CS222",
+      "name": "Theory of Algorithms",
+      "hours": 3,
+      "desc": "Complexity bounds and asymptotic analysis, standard complexity classes, empirical measurements of performance, time and space tradeoffs in algorithms, mathematical analysis of recursive and non-recursive algorithms, algorithm design strategies, backtracking algorithms, dynamic programming, sorting algorithms, string matching, graph algorithms, optimization algorithms."
+    },
+    {
+      "code": "CS223",
+      "name": "Data Structures",
+      "hours": 3,
+      "desc": "Advanced C language applications (Structures, Pointers), Lists, stacks and queues; hash tables; binary search trees; balanced trees, B-Trees, graphs; depth- and breadth-first traversals; shortest path algorithms; transitive closure; minimum spanning tree; topological sort; implementation strategies for data structures; strategies for choosing the right data structure."
+    },
+    {
+      "code": "CS264",
+      "name": "Visual Programming",
+      "hours": 3,
+      "desc": "This course explores topics in Visual programming fundamentals; This course aims to introduce the students who have built a solid background in console systems to the concepts of Visual/GUI design using structured and OO programming skills acquired in previous courses. Topics include Windows Forms and Controls, Event-Driven Programming, Error Handling, Files, Multi-threading; Animation and graphics; Database connectivity."
+    },
+    {
+      "code": "CS263",
+      "name": "Database Management Systems",
+      "hours": 3,
+      "desc": "DBMS Architecture, Storage Hierarchy, Indexes, Entity-relationship (E-R) modeling, The relational model, Relational Query Language (SQL), Query processing and optimization, Creation and manipulation of databases; Indices and views; Access rights management; Programming in SQL; Transaction Processing (Transactional properties, Concurrency control, Locking, and Crash recovery); Data dictionaries; Required software tools: A main-stream commercial DBMS such as MS SQL, Oracle."
+    },
+    {
+      "code": "CS323",
+      "name": "Computational Theory",
+      "hours": 3,
+      "desc": "Introduction to automata; languages and grammars; complexity theory and computability; Base mathematics and theoretical concepts behind computing: Finite automata; Regular expressions; Grammars; Stack machines; Turing machines; Decidability and reducibility; Complexity Classes; De- notational Semantics."
+    },
+    {
+      "code": "CS342",
+      "name": "Software Engineering",
+      "hours": 3,
+      "desc": "The product and the process, Software project management: Basic concepts, Software process and project metrics, Software project Planning, Risk management, Project scheduling and tracking, Quality assurance, Configuration management; Classical approaches: Waterfall and Spiral models; Object-oriented approach; Unified Modeling Language (UML); Concepts and notations of object-oriented analysis: Base concepts; Static concepts; Dynamic concepts; Object-oriented analysis: Analytical process; Analysis patterns; Static model; Dynamic model; Design notations and diagram; Design patterns."
+    },
+    {
+      "code": "CE352",
+      "name": "Computer Networks",
+      "hours": 3,
+      "desc": "Study of computer network architectures, protocols, and interfaces. The OSI reference model and Internet architecture. Network models: LAN and WAN; Networking techniques such as multiple access, packet/cell switching, internetworking, end-to-end protocols, and congestion control; IP, UDP and TCP protocols; Internet application protocols and applications: http; DNS; Web services; email protocols: SMTP, POP3; Network security."
+    },
+    {
+      "code": "CS355",
+      "name": "Web Technologies",
+      "hours": 3,
+      "desc": "This course explores topics in Internet and Web technology; Mobile components; Event handling: detection, notification, and response; Web applications development; Standard web services and protocols: WSDL, and UDDI, and SOAP; Design of web services and applications within a service-oriented architecture; Web application languages: HTML, XML, and scripting languages; Programming techniques for consumption and implementation of web services; Server web applications; Java servlets, and Java Server Pages; PHP basics; PHP forms and sessions; Databases connection with SQL and PHP."
+    },
+    {
+      "code": "CS356",
+      "name": "Information Security",
+      "hours": 3,
+      "desc": "This course covers fundamental issues surrounding information security and privacy. Course topics include confidentiality, integrity, availability; authentication models, protection models, security kernels, secure programming, audit, intrusion detection and response, operational security issues, physical security issues, personnel security, policy formation and enforcement, access controls, information flow; legal and social issues, identification and authentication in local and distributed systems, classification and trust modeling, risk assessment, data aggregation, behavioral advertising, privacy-preserving data mining, privacy- preserving data publishing, website privacy policies and practices, and anonymous communication."
+    },
+    {
+      "code": "CE357",
+      "name": "Operating Systems",
+      "hours": 3,
+      "desc": "Operating system structures, process concept, hierarchy of processes, semaphores, inter-process communication, CPU scheduling, deadlocks, memory management, virtual memory, secondary storage management, file systems, I/O systems."
+    },
+    {
+      "code": "CE3570",
+      "name": "Operating Systems Lab",
+      "hours": 1,
+      "desc": "The course also includes 3-hours lab session every week to enhance hands-on experience on topics that are theoretically covered in the CE357 course."
+    },
+    {
+      "code": "CS416",
+      "name": "Systems Programming",
+      "hours": 3,
+      "desc": "System-level UNIX API's: Process manipulation; 10 operations; Use of OS functionality; System- level programming in C; Shell programming; Unix system services: file system, process and thread management, inter-process communication: pipes, shared memory, and message queues, semaphores; Network programming, and synchronization; Microsoft Windows and UNIX TCP and UDP Communications; Connection-Oriented Client-Server Architecture; Remote procedure calls and COM overview."
+    },
+    {
+      "code": "CS451",
+      "name": "Artificial Intelligence",
+      "hours": 3,
+      "desc": "Mathematical principles of Al; introducing several Al approaches and techniques and their underlying mathematical/algorithmic structure. Problems; problem spaces, and search. Heuristic search techniques, simulated annealing, genetic algorithms and Tabu search. Knowledge representation and logic; Constraint logic programming; Statistical reasoning; Fuzzy set theory and reasoning; Neural networks."
+    },
+    {
+      "code": "CE354",
+      "name": "Computer Security",
+      "hours": 3,
+      "desc": "Security of networked computer systems; secure network configuration and user management; handling of attacks; Tools for secure network management; System management; System administration; System programming for security; Security: local attacks; network attacks; Firewalls; Security of web servers, ftp servers and mail servers; Virtual private networks, Cryptography, encryption and decryption techniques, primary key and digital certificate principles, Public Key Cryptography and the RSA Algorithm."
+    },
+    {
+      "code": "CS470",
+      "name": "Cryptography",
+      "hours": 3,
+      "desc": "This course introduces the students to classical and modern cryptographic techniques and their applications. Extensive study of required mathematical techniques is introduced including number theory, modular arithmetic, prime numbers, Fermat's and Euler's theorems, and testing for primality. The students then will be thoroughly exposed to different cryptographic techniques and algorithms: Block and Stream ciphers, Symmetric and Asymmetric Key encryption, Public Key encryption, One-time padding. The students will also learn about the different Key Creation and Exchange techniques, Digital Signatures, Message Authentication Codes, and Hash Algorithms."
+    },
+    {
+      "code": "CS4713",
+      "name": "Ethical Hacking",
+      "hours": 3,
+      "desc": "This course introduces the students to the various techniques of ethical hacking. The student will learn in a safe environment (sandbox) how to find network and IT systems vulnerabilities, reporting these vulnerabilities, and how to mitigate their effects. The students will also learn about the legal and ethical aspects of such testing."
+    },
+    {
+      "code": "CS4714",
+      "name": "Digital Forensics",
+      "hours": 3,
+      "desc": "This course introduces a theoretical and practical knowledge on the principles and practices of digital forensics. It covers the sources of digital evidence, digital investigation, and fundamentals of computer forensics. Coverage includes disk examination, memory acquisition, and logging analysis. The course also includes registry, e-mail, and database forensics."
+    },
+    {
+      "code": "CS391",
+      "name": "Field Training",
+      "hours": 0,
+      "desc": "Eight consecutive weeks of training where students must complete 160 hours of field training in approved industries in Jordan."
+    },
+    {
+      "code": "CS491",
+      "name": "International Internship 20 weeks",
+      "hours": 12,
+      "desc": "Field training is a period of six month to be spent in the industry in Germany, under supervision of the academic faculty in Jordan and in Germany. Periodic reports and a final report need to be submitted for evaluation and an oral examination is required."
+    },
+    {
+      "code": "CS492",
+      "name": "Senior Project",
+      "hours": 3,
+      "desc": "Theoretical investigation and practical implementation of a special project under the supervision of an academic faculty member, detailed report as well as an oral examination are required."
+    }
+  ],
+  "prerequisites": [
+    { "course": "ENGL0099", "prereq": "ENGL0098" },
+    { "course": "ARB100", "prereq": "ARB0099" },
+    { "course": "ENGL1001", "prereq": "ENGL0099" },
+    { "course": "ENGL1002", "prereq": "ENGL1001" },
+    { "course": "NE101", "prereq": "ARB0099" },
+    { "course": "NE101", "prereq": "ENGL0099" },
+    { "course": "MATH101", "prereq": "MATH0099" },
+    { "course": "MATH102", "prereq": "MATH101" },
+    { "course": "CS117", "prereq": "CS116" },
+    { "course": "CS117", "prereq": "CS1160" },
+    { "course": "CS1170", "prereq": "CS116" },
+    { "course": "CS1170", "prereq": "CS1160" },
+    { "course": "CS1170", "prereq": "CS117" },
+    { "course": "CE212", "prereq": "CS116" },
+    { "course": "CE212", "prereq": "MATH0099" },
+    { "course": "CE212", "prereq": "ARB0099" },
+    { "course": "CE212", "prereq": "ENGL0099" },
+    { "course": "CE2120", "prereq": "CS116" },
+    { "course": "CE2120", "prereq": "CE212" },
+    { "course": "CE2120", "prereq": "MATH0099" },
+    { "course": "CE2120", "prereq": "ARB0099" },
+    { "course": "CE2120", "prereq": "ENGL0099" },
+    { "course": "EE317", "prereq": "MATH101" },
+    { "course": "EE317", "prereq": "MATH102" },
+    { "course": "IE0121", "prereq": "MATH101" },
+    { "course": "CS201", "prereq": "MATH0099" },
+    { "course": "CS201", "prereq": "ARB0099" },
+    { "course": "CS201", "prereq": "ENGL0099" },
+    { "course": "CE201", "prereq": "CE212" },
+    { "course": "CE201", "prereq": "ARB0099" },
+    { "course": "CE201", "prereq": "ENGL0099" },
+    { "course": "CE201", "prereq": "MATH0099" },
+    { "course": "CS222", "prereq": "CS116" },
+    { "course": "CS222", "prereq": "CS201" },
+    { "course": "CS222", "prereq": "ARB0099" },
+    { "course": "CS222", "prereq": "ENGL0099" },
+    { "course": "CS222", "prereq": "MATH0099" },
+    { "course": "CS223", "prereq": "CS116" },
+    { "course": "CS223", "prereq": "ARB0099" },
+    { "course": "CS223", "prereq": "ENGL0099" },
+    { "course": "CS223", "prereq": "MATH0099" },
+    { "course": "CS264", "prereq": "CS117" },
+    { "course": "CS264", "prereq": "CS263" },
+    { "course": "CS264", "prereq": "ARB0099" },
+    { "course": "CS264", "prereq": "ENGL0099" },
+    { "course": "CS264", "prereq": "MATH0099" },
+    { "course": "CS263", "prereq": "CS117" },
+    { "course": "CS263", "prereq": "ARB0099" },
+    { "course": "CS263", "prereq": "ENGL0099" },
+    { "course": "CS263", "prereq": "MATH0099" },
+    { "course": "CS323", "prereq": "CS222" },
+    { "course": "CS323", "prereq": "CS223" },
+    { "course": "CS342", "prereq": "CS117" },
+    { "course": "CS342", "prereq": "CS263" },
+    { "course": "CE352", "prereq": "CE201" },
+    { "course": "CS355", "prereq": "CS117" },
+    { "course": "CS355", "prereq": "CS263" },
+    { "course": "CS356", "prereq": "CS263" },
+    { "course": "CE357", "prereq": "CE201" },
+    { "course": "CE3570", "prereq": "CE201" },
+    { "course": "CE3570", "prereq": "CE357" },
+    { "course": "CS416", "prereq": "CS223" },
+    { "course": "CS451", "prereq": "CS222" },
+    { "course": "CS451", "prereq": "CS223" },
+    { "course": "CS491", "prereq": "CS391" },
+    { "course": "CE354", "prereq": "CE352" },
+    { "course": "CS470", "prereq": "CS222" },
+    { "course": "CS4713", "prereq": "CE352" },
+    { "course": "CS4714", "prereq": "CE352" }
+  ]
+}

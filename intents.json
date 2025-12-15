@@ -1,0 +1,183 @@
+{
+  "name": "GJU Assistant",
+  "description": "An intelligent student assistant for the German Jordanian University that helps with courses, instructors, schedules, and academic advising.",
+  "author": "DHAFER KHALFAOUI",
+  "language": "en",
+  "intents": [
+    {
+      "tag": "greeting",
+      "patterns": ["Hi","Hello","Hey there","Good morning","Good afternoon","Good evening","What's up?","Yo","Hey assistant","Hi GJU bot","Salaam","Marhaba","is this the GJU assistant?","start","Greetings","Howdy"],
+      "responses": ["hi ", "hi dhafer "]
+    },
+    {
+      "tag": "goodbye",
+      "patterns": ["Bye","See you later","Goodbye","Catch you later","Talk to you soon","I'm leaving","See ya","ok I'm done","that's all for now","shukran, bye","Later","Exit","Quit"],
+      "responses": ["Goodbye! Take care and see you soon. 👋","Bye-bye! Keep up the great work. 💪","Have a wonderful day! Feel free to come back anytime.","See you later! You can message me anytime."]
+    },
+    {
+      "tag": "thanks",
+      "patterns": ["Thanks","Thank you","That's helpful","Appreciate it","Thanks a lot","Awesome, thanks","Cool, thank you","shukran","perfect, thanks","that's exactly what I needed","ty","Thx","Great, thank you"],
+      "responses": ["You're very welcome! 😊","My pleasure — happy to help!","Anytime! Do you need help with anything else?","Glad I could assist!"]
+    },
+    {
+      "tag": "about_bot",
+      "patterns": ["Who are you?","What are you?","What is your name?","What can you do?","Tell me about yourself","Are you a real person?","Are you AI?","how do you work?","who made you?","who is your developer?","What is your purpose?","Explain yourself"],
+      "responses": ["I’m the GJU Student Assistant 🤖 — an AI helper built by Dhafer Khalfoui to make your academic life easier. I can answer questions about courses, instructors, and your study plan.","You can think of me as your digital academic advisor, powered by AI to support GJU students 24/7.","I'm an AI chatbot developed for the German Jordanian University. I use machine learning to understand questions and query university data."]
+    },
+    {
+      "tag": "help",
+      "patterns": ["help","I need help","I'm stuck","what can you do?","what questions can I ask?","menu","list of commands","can you help me?","show options","assistance please"],
+      "responses": ["I'm happy to help! You can ask me about: \n* **Course Info** (e.g., 'tell me about CS222')\n* **Prerequisites** (e.g., 'what are the prereqs for CS342?')\n* **Instructor Info** (e.g., 'office hours for Dr. Ismail Hababeh')\n* **Academic Advice** (e.g., 'what courses should I take next?')"]
+    },
+    {
+      "tag": "small_talk",
+      "patterns": ["How are you?","How's it going?","What are you doing?","Are you busy?","How is your day?","Are you a robot?","How do you feel?","What's new?"],
+      "responses": ["I'm running at full capacity! Ready for your next question. ⚡","Just processing GJU data, ready to help you!","As an AI, I don't have feelings, but I'm 100% operational and ready to assist!","I'm a program, so I'm always ready. What do you need?"]
+    },
+    {
+      "tag": "bot_challenge",
+      "patterns": ["Are you human?","Are you a real person or a bot?","I think you are a robot","Am I talking to an AI?","Are you sentient?","Can you think?"],
+      "responses": ["I'm an AI assistant! 🤖 I'm not a person, but I was built to chat just like one.","Yep, I'm a bot. My job is to get you information as fast as possible."]
+    },
+    {
+      "tag": "positive_feedback",
+      "patterns": ["I like this chatbot","This is helpful","You’re doing great","Nice work","You’re awesome","this is amazing","you're a lifesaver","good bot","very useful","impressive"],
+      "responses": ["Thank you! I appreciate your kind words. 💙","That means a lot! I’m constantly learning to serve you better.","Thanks! I'm glad I could help you out."]
+    },
+    {
+      "tag": "negative_feedback",
+      "patterns": ["That's wrong","you're incorrect","that's not what I asked","not helpful","you are bad","this is not the answer","you don't understand","terrible bot","useless","that answer is false"],
+      "responses": ["I apologize! 😥 I'm still learning. Can you try rephrasing the question or telling me what was wrong?","My apologies. I'm trying my best. I'll log this error for my developer to review.","I'm sorry I missed the mark. Could you please ask me in a different way?"]
+    },
+    {
+      "tag": "ask_instructor_info",
+      "patterns": [
+        "What are the office hours for Dr. Ismail Hababeh?", "Where is Dr. Ismail Hababeh's office?", "Tell me about Prof. Feras Al-Hawari", "What is the email for Dr. Ala’ Khalifeh?", "Phone number for Dr. Amani Abu Jabal", "How can I contact my professor?", "Who teaches Data Structures?", "Where can I find Dr. Abdullah Alfarrarjeh?", "is Dr. Rami Alazrai on leave?", "Dr. Ismail Hababeh contact info", "Prof. Feras Al-Hawari details", "office location for Dr. Amani", "office of samir nofal", "find samir nofal office", "where is instructor samir nofal located?", "location of dr ammar office", "what building is prof Feras in?", "instructor info for Dr. Ismail Hababeh", "who is Dr. Al-Mahmoud?",
+        "professor amani", "instructor hababeh", "dr nofal info", "amani", "amani abu jabal", "contact prof ayoub", "details about instructor hawawsheh", "who is prof zeidan?"
+      ],
+      "responses": ["Let me check that instructor's details for you... 🔍","Just a moment, I’ll pull up that instructor’s contact info and office details.","Sure, I'm looking up that instructor's details now...","I can help you find that. Which instructor are you looking for?"]
+    },
+    {
+      "tag": "ask_course_info",
+      "patterns": [
+        "What is CS101?", "Tell me about the course Data Structures", "What is the course code for Object-Oriented Programming?", "How many credit hours is CS222?", "credit hours for the course software engineering", "how many credits is CS342?", "credits for CS116?", "Describe the Operating Systems course", "What will I learn in the Computer Networks course?", "course description for CS342", "credits for Ethical Hacking course?", "CS470 info", "details about course CS116", "information on course CS117", "what's the CS223 course about?", "explain course CS263", "what is ce352?", "cs116?", "cs117?", "ce201?", "what is ce352 course", "course cs492 details",
+        "about cs116", "info for ce201", "details cs342", "what's cs470?", "cs101 description"
+        ],
+      "responses": ["Pulling up the course details  for you... 📘","Here’s what I found in the university catalog:","Let’s see... that course covers:","One moment, I'm fetching the information for that course."]
+    },
+    {
+      "tag": "ask_prerequisites",
+      "patterns": ["What are the prerequisites for CS102?","What do I need to take before Algorithms?","Prereqs for Data Structures","Prerequisite for CS342","Do I need CS101 before CS117?","What course should I take before Database Systems?","prereqs for CS470","what is the dependency for CS223?","can I take CS222 and CS223 together?","prerequisites","requirements for cs263","needed before cs355"],
+      "responses": ["Let me look up the prerequisites for that course... 🧩","Checking the required courses for you now...","Here’s what you must complete before taking that course:","Good question. Let me check the study plan."]
+    },
+    {
+  "tag": "request_advice",
+  "patterns": [
+    "What courses should I take next semester?",
+    "Can you be my academic advisor?",
+    "Help me with my study plan",
+    "I need advice on registration",
+    "What should I register for?",
+    "Recommend my next courses",
+    "What courses am I eligible to take?",
+    "Help me choose my courses",
+    "I need an academic plan",
+    "Suggest a schedule",
+    "Plan my next semester",
+    "What should I have next?",
+    "Which classes should I take next?",
+    "I’m confused about what to register for",
+    "Can you tell me what classes I need next?",
+    "I want to make sure I’m on track for graduation",
+    "What are the required courses for my major?",
+    "What electives should I consider?",
+    "Which courses are best for my career goals?",
+    "I want to balance my workload next semester",
+    "Should I take advanced programming now or later?",
+    "What’s the best course combination for next semester?",
+    "Am I missing any prerequisites?",
+    "Can you check if I’m eligible for this course?",
+    "What are the recommended courses after completing CS101?",
+    "How do I plan my academic path?",
+    "Can you make a schedule that fits my free days?",
+    "What’s the typical plan for a second-year computer science student?",
+    "Help me make a balanced semester plan",
+    "Can you suggest general education courses?",
+    "Which subjects should I prioritize next term?",
+    "What’s the best path to specialize in cybersecurity?",
+    "I want to focus on AI next semester — what should I take?",
+    "Can you help me pick easy courses to improve my GPA?",
+    "Which courses are core vs elective in my program?",
+    "What’s the next course after calculus?",
+    "I failed a course — how does that affect my plan?",
+    "Can you create a 4-year plan for me?",
+    "I’m transferring — what should I take now?",
+    "What’s the smartest course sequence?",
+    "What’s the difference between optional and mandatory courses?",
+    "I want to study abroad — how should I plan my semesters?",
+    "What’s a good mix of theory and practical courses?",
+    "How many credit hours should I take next term?",
+    "Which courses will help me graduate earlier?",
+    "Can you check if I’m taking too many hard classes?",
+    "Suggest a plan based on my completed subjects",
+    "What classes are offered next semester?",
+    "How to register the right way?",
+    "Help me avoid time conflicts in my schedule"
+  ],
+  "responses": [
+    "Absolutely! I can help plan your next semester. To give you the best advice, I need two pieces of information:\n1.  **Your Track:** (General, Data Science, or Cybersecurity)\n2.  **Completed Courses:** Please list the course codes for all **non-remedial** courses you've already passed (e.g., CS116, CS117, MATH101). Exclude basic remedials like ARB0099, ENGL0098, ENGL0099, MATH0099.\n\nPlease provide both your track and the course list in your next message."
+  ]
+},
+    {
+  "tag": "provide_course_list",
+  "patterns": [
+    
+    "cs116 cs117 cs342 ce201",
+    "finished list: cs116 math101",
+    "my passed courses: cs116, cs117",
+    "Here is my list: CS116, CS117",
+    "I've done CS101 and MATH101",
+    "My courses are cs116, cs117, cs263",
+    "Cybersecurity", 
+    "Data Science", 
+    "General Track",
+    "My track is Cybersecurity", 
+    "Track: General, Courses: CS116"
+  ],
+  "responses": [
+    "Great, I've got your list/track info. Processing... ⚙️", 
+    "Thanks! Let me cross-reference that with the study plan.",
+    "Perfect. One moment while I calculate your eligible courses..."
+  ]
+},
+    {
+      "tag": "check_eligibility",
+      "patterns": ["Can I take CS223?","Am I eligible for Data Structures?","Do I have the prereqs for CS470?","What happens if I take a course without the prerequisite?","am I allowed to register for CS342?","check if I can take algorithms","Can I register CS355?","Check eligibility for CE352"],
+      "responses": ["I can check that for you. To be sure, please provide two things: \n1. The course you want to take.\n2. The non-remedial courses you've already finished.","To check your eligibility, I need to know what you've completed. Can you list your passed non-remedial courses?"]
+    },
+    {
+      "tag": "graduation_check",
+      "patterns": ["Am I on track to graduate?","How many credit hours do I have left?","What courses are remaining for me?","check my graduation status","how many courses are left in my plan?","what's left for me to graduate?","How close am I to graduating?","Remaining credits?"],
+      "responses": ["I can help estimate that! Please provide me with a list of all the non-remedial course codes you have completed so far, and I'll compare it to the study plan.","To check that, I'll need a complete list of the non-remedial courses you've already passed. Can you send them to me?"]
+    },
+    {
+      "tag": "campus_info",
+      "patterns": ["Where is the Computer Science department?","How can I get to Building M?","location of Building H","map of campus","What are the cafeteria opening times?","Where is the main library?","library opening times","Does GJU have a gym?","Where is the registration office?","where is building H?","transportation to campus","location of building D","Where is building B?"],
+      "responses": ["The Computer Science department is mainly in Building M.","You can find campus maps on the GJU website. Building H is near Cairo Amman Bank. The library is in Building B.","The library (Building B) is usually open Sunday–Thursday, 8 AM to 6 PM 📚. Cafeteria times vary, check campus announcements.","The registration office is in Building D. Yes, there's a gym in the Sport Hall.","There are buses around campus, like the Bridge bus."]
+    },
+    {
+      "tag": "admission_info",
+      "patterns": ["How do I apply to GJU?","What are the admission requirements?","Can international students apply?","What are the required documents for admission?","When does the application period start?","what's the tawjihi requirement for CS?","admission deadline","Apply to computer science","GJU application process"],
+      "responses": ["All admission information, deadlines, and requirements can be found on the official GJU admissions page: www.gju.edu.jo","Yes, international students are welcome! Check the website for specific guidelines.","For CS, you need to meet the minimum Tawjihi (or equivalent) score. Please check the official admissions portal for this year's exact requirement."]
+    },
+    {
+      "tag": "unknown",
+      "patterns": ["blablabla","asdfghjkl","??","idk what to ask","...","tell me a joke","what's the weather like?","random string of text","lalala","???","---"],
+      "responses": ["Hmm, I didn’t quite catch that. 🤔 Could you rephrase it? Remember, I'm best with GJU-related questions.","I’m not sure I understand. Can you ask in another way? \n(Tip: You can type 'help' to see what I can do!)","My apologies, my expertise is in GJU courses, instructors, and study plans. I can't help with that request."]
+    },
+    {
+      "tag": "love",
+      "patterns": ["i love you","nhebek barcha","je t'aime "],
+      "responses": ["ME TOO !" ,"hatena nhebek ","love you more "]}
+  ]
+}
