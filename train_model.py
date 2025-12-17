@@ -1,74 +1,54 @@
 import json
-import nltk
-from nltk.stem import WordNetLemmatizer
-from sklearn.feature_extraction.text import TfidfVectorizer
-from sklearn.naive_bayes import MultinomialNB
-from sklearn.pipeline import Pipeline
-import joblib # Used to save our model
+import numpy as np # type: ignore
+import tensorflow as tf # type: ignore
+from transformers import AutoTokenizer, TFAutoModelForSequenceClassification # type: ignore
+from sklearn.preprocessing import LabelEncoder # type: ignore
+import pickle
+import os
 
-# --- Download NLTK data ---
-try:
-    # Check for 'wordnet' (for lemmatization)
-    nltk.data.find('corpora/wordnet')
-except LookupError:
-    print("NLTK 'wordnet' not found. Downloading...")
-    nltk.download('wordnet')
+# 1. Setup
+MODEL_NAME = "bert-base-uncased"
+MAX_LEN = 50
+os.makedirs("bert_intent_model", exist_ok=True)
 
-try:
-    # Check for 'punkt' (for tokenization)
-    nltk.data.find('tokenizers/punkt')
-except LookupError:
-    print("NLTK 'punkt' tokenizer not found. Downloading...")
-    nltk.download('punkt')
+# 2. Load Data
+with open('intents.json', 'r') as f:
+    data = json.load(f)
 
-try:
-    # Check for 'punkt_tab' (the missing resource)
-    nltk.data.find('tokenizers/punkt_tab')
-except LookupError:
-    print("NLTK 'punkt_tab' resource not found. Downloading...")
-    nltk.download('punkt_tab')
-
-# --- 1. Load and Preprocess Data ---
-print("Loading intents...")
-with open('intents.json', 'r', encoding='utf-8') as f:
-    intents = json.load(f)
-
-lemmatizer = WordNetLemmatizer()
-
-# These lists will hold our training data
 patterns = []
 tags = []
-
-for intent in intents['intents']:
+for intent in data['intents']:
     for pattern in intent['patterns']:
-        # Tokenize and lemmatize each word in the pattern
-        words = nltk.word_tokenize(pattern)
-        lemmatized_words = [lemmatizer.lemmatize(w.lower()) for w in words]
-
-        # Add the processed pattern and its tag
-        patterns.append(" ".join(lemmatized_words))
+        patterns.append(pattern)
         tags.append(intent['tag'])
 
-print(f"Loaded {len(patterns)} patterns.")
+# 3. Encode Labels
+encoder = LabelEncoder()
+labels = encoder.fit_transform(tags)
+num_classes = len(set(labels))
 
-# --- 2. Create and Train the Model Pipeline ---
-print("Creating and training the model...")
+with open('bert_intent_model/label_encoder.pickle', 'wb') as f:
+    pickle.dump(encoder, f)
 
-# This pipeline does two things:
-# 1. TfidfVectorizer: Converts our text patterns into a matrix of numbers.
-# 2. MultinomialNB: A simple but effective classifier for text.
-model_pipeline = Pipeline([
-    ('vectorizer', TfidfVectorizer()),
-    ('classifier', MultinomialNB())
-])
+# 4. Tokenize
+tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME)
+tokenizer.save_pretrained("bert_intent_model")
 
-# Train the model on our patterns and tags
-model_pipeline.fit(patterns, tags)
+encodings = tokenizer(patterns, truncation=True, padding='max_length', max_length=MAX_LEN, return_tensors='tf')
+dataset = tf.data.Dataset.from_tensor_slices((dict(encodings), labels)).shuffle(100).batch(8)
 
-print("Model training complete.")
+# 5. Train
+model = TFAutoModelForSequenceClassification.from_pretrained(MODEL_NAME, num_labels=num_classes)
+optimizer = tf.keras.optimizers.Adam(learning_rate=5e-5)
+loss = tf.keras.losses.SparseCategoricalCrossentropy(from_logits=True)
+model.compile(optimizer=optimizer, loss=loss, metrics=['accuracy'])
 
-# --- 3. Save the Trained Model ---
-model_filename = 'chatbot_model.joblib'
-joblib.dump(model_pipeline, model_filename)
+print("Training Model...")
+model.fit(dataset, epochs=5)
 
-print(f"Model saved successfully as '{model_filename}'")
+# 6. Save
+model.save_pretrained("bert_intent_model")
+with open('bert_intent_model/max_len.json', 'w') as f:
+    json.dump({"max_len": MAX_LEN}, f)
+
+print("✅ Model trained and saved to 'bert_intent_model/' folder.")

@@ -3,28 +3,69 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student Assistant</title>
-    
+    <title>GJU Student Assistant</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/static/style.css">
 </head>
 <body>
-    
-    <div class="chat-container">
-        <div class="chat-header">
-            <h2 class="logo">GJU</h2>
-        </div>
-        <div class="chat-box" id="chat-box">
-            <div class="message bot-message">
-                <p>Hello! I'm your AI assistant. How can I help you today?</p>
+
+    <div class="main-container">
+        <div class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <h2>🎓 GJU Bot</h2>
+            </div>
+            <div class="info-box">
+                <p><strong>💡 Suggestions</strong></p>
+                <ul>
+                    <li>"Prereqs for CS116"</li>
+                    <li>"Who is Dr. Hababeh?"</li>
+                    <li>"Plan my semester"</li>
+                    <li>"Is CS342 hard?"</li>
+                </ul>
+            </div>
+            <div class="sidebar-footer">
+                <p>v2.0 Advanced</p>
             </div>
         </div>
-        <div class="chat-input">
-            <input type="text" id="user-input" placeholder="Type your message...">
-            <button id="send-btn">Send</button>
+
+        <div class="chat-area">
+            
+            <div class="chat-header">
+                <div class="left-controls">
+                    <button id="sidebar-toggle" class="icon-btn" title="Toggle Sidebar">
+                        <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+                    </button>
+                    <h3>Academic Assistant</h3>
+                </div>
+                
+                <div class="right-controls">
+                    <button id="theme-toggle" class="icon-btn" title="Switch Theme">
+                        <span id="theme-icon">🌙</span>
+                    </button>
+                </div>
+            </div>
+            
+            <div class="messages-box" id="chat-box">
+                <div class="message bot-message">
+                    <div class="avatar">🤖</div>
+                    <div class="bubble">
+                        <p>Hello! I'm your GJU AI assistant. 🎓<br>I can help with courses, instructors, and advising.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="input-container">
+                <div class="input-wrapper">
+                    <input type="text" id="user-input" placeholder="Ask me anything..." autocomplete="off">
+                    <button id="send-btn" title="Send">
+                        <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"></path></svg>
+                    </button>
+                </div>
+                <div class="disclaimer">
+                    AI can make mistakes. Please verify important info.
+                </div>
+            </div>
         </div>
     </div>
     

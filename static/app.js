@@ -1,81 +1,96 @@
-// Wait for the DOM to be fully loaded before running the script
 document.addEventListener("DOMContentLoaded", () => {
-    
-    // Get references to the HTML elements we need
     const chatBox = document.getElementById('chat-box');
     const userInput = document.getElementById('user-input');
     const sendBtn = document.getElementById('send-btn');
+    
+    // New UI Elements
+    const sidebar = document.getElementById('sidebar');
+    const sidebarToggle = document.getElementById('sidebar-toggle');
+    const themeToggle = document.getElementById('theme-toggle');
+    const themeIcon = document.getElementById('theme-icon');
 
-    // Function to add a message to the chat box
-    function addMessage(message, sender) {
-        const messageElement = document.createElement('div');
+    // --- 1. Sidebar Toggle Logic ---
+    sidebarToggle.addEventListener('click', () => {
+        sidebar.classList.toggle('hidden');
+    });
+
+    // --- 2. Dark Mode Logic ---
+    themeToggle.addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode');
         
-        // This adds a class 'user-message' or 'bot-message'
-        messageElement.classList.add('message');
-        if (sender === 'user') {
-            messageElement.classList.add('user-message');
+        // Change Icon based on mode
+        if (document.body.classList.contains('dark-mode')) {
+            themeIcon.textContent = '☀️'; // Sun icon for dark mode
+            localStorage.setItem('theme', 'dark');
         } else {
-            messageElement.classList.add('bot-message');
+            themeIcon.textContent = '🌙'; // Moon icon for light mode
+            localStorage.setItem('theme', 'light');
         }
-        
-        const p = document.createElement('p');
-        p.textContent = message;
-        messageElement.appendChild(p);
-        
-        chatBox.appendChild(messageElement);
-        
-        // Scroll to the bottom of the chat box
-        chatBox.scrollTop = chatBox.scrollHeight;
+    });
+
+    // Check saved preference on load
+    if (localStorage.getItem('theme') === 'dark') {
+        document.body.classList.add('dark-mode');
+        themeIcon.textContent = '☀️';
     }
 
-    // Function to send a message to the bot
-    async function sendMessage() {
-        const message = userInput.value.trim();
+    // --- 3. Message Formatting ---
+    function formatMessage(text) {
+        // Basic Markdown support: Bold, Newlines, Bullet points
+        return text
+            .replace(/\n/g, '<br>')
+            .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+            .replace(/- (.*?)(<br>|$)/g, '<li>$1</li>');
+    }
+
+    function addMessage(text, sender) {
+        const msgDiv = document.createElement('div');
+        msgDiv.classList.add('message');
+        msgDiv.classList.add(sender === 'user' ? 'user-message' : 'bot-message');
+
+        const avatar = document.createElement('div');
+        avatar.classList.add('avatar');
+        avatar.textContent = sender === 'user' ? '👤' : '🤖';
+
+        const bubble = document.createElement('div');
+        bubble.classList.add('bubble');
         
-        if (message === "") {
-            return; // Don't send empty messages
+        if (sender === 'bot') {
+            bubble.innerHTML = formatMessage(text);
+        } else {
+            bubble.textContent = text;
         }
 
-        // Add the user's message to the chat box
-        addMessage(message, 'user');
+        msgDiv.appendChild(avatar);
+        msgDiv.appendChild(bubble);
+        chatBox.appendChild(msgDiv);
         
-        // Clear the input field
+        // Smooth scroll to bottom
+        chatBox.scrollTo({ top: chatBox.scrollHeight, behavior: 'smooth' });
+    }
+
+    async function sendMessage() {
+        const text = userInput.value.trim();
+        if (!text) return;
+
+        addMessage(text, 'user');
         userInput.value = '';
 
         try {
-            // Send the message to the Flask server
             const response = await fetch('/chat', {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ message: message }),
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ message: text }),
             });
-
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-
             const data = await response.json();
-            
-            // Add the bot's response to the chat box
             addMessage(data.response, 'bot');
-
         } catch (error) {
-            console.error('Error:', error);
-            addMessage('Sorry, something went wrong. Please try again.', 'bot');
+            addMessage("⚠️ Network error. Please check your connection.", 'bot');
         }
     }
 
-    // --- Event Listeners ---
-    
-    // Send message when the "Send" button is clicked
     sendBtn.addEventListener('click', sendMessage);
-
-    // Send message when the "Enter" key is pressed in the input field
-    userInput.addEventListener('keypress', (event) => {
-        if (event.key === 'Enter') {
-            sendMessage();
-        }
+    userInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') sendMessage();
     });
 });

@@ -1,180 +1,237 @@
-/* --- 1. FONT IMPORT --- */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
-
-/* --- 2. THEME & COLOR VARIABLES --- */
 :root {
-    /* GJU Palette */
-    --gju-blue: #0071bc;
-    --gju-gold: #f6a623;
-    --gju-purple: #9b5de5;
-
-    /* Font */
-    --font-main: 'Poppins', 'Inter', 'Plus Jakarta Sans', sans-serif;
-
-    /* Light Mode */
-    --bg-color: #f6f7f9;
-    --bg-color-alt: #ffffff;
-    --text-color: #1a1d23;
-    --shadow-color: rgba(0, 0, 0, 0.05);
+    /* --- Light Mode Variables --- */
+    --bg-body: #ffffff;
+    --bg-sidebar: #f0f4f9;
+    --text-main: #1f1f1f;
+    --text-secondary: #444746;
+    
+    --msg-user-bg: #e3effd; /* Light Blue Bubble */
+    --msg-user-text: #1f1f1f;
+    
+    --msg-bot-bg: #f2f2f2; /* Light Grey Bubble */
+    --msg-bot-text: #1f1f1f;
+    
+    --input-bg: #f0f4f9;
     --border-color: #e0e0e0;
+    --accent-color: #0071bc; /* GJU Blue */
+    
+    /* Font Size Control */
+    --font-base: 18px; /* Bigger letters as requested */
 }
 
-@media (prefers-color-scheme: dark) {
-    :root {
-        /* Dark Mode */
-        --bg-color: #0f1115;
-        --bg-color-alt: #1a1d23;
-        --text-color: #f0f2f5;
-        --shadow-color: rgba(0, 0, 0, 0.2);
-        --border-color: #333;
-    }
+/* --- Dark Mode Variables --- */
+body.dark-mode {
+    --bg-body: #131314;
+    --bg-sidebar: #1e1f20;
+    --text-main: #e3e3e3;
+    --text-secondary: #c4c7c5;
+    
+    --msg-user-bg: #282a2c; /* Dark Grey Bubble */
+    --msg-user-text: #e3e3e3;
+    
+    --msg-bot-bg: #1e1f20; /* Darker Grey Bubble */
+    --msg-bot-text: #e3e3e3;
+    
+    --input-bg: #1e1f20;
+    --border-color: #444746;
+    --accent-color: #8ab4f8; /* Lighter Blue for Dark Mode */
 }
 
-/* --- 3. BASIC LAYOUT --- */
 body {
-    font-family: var(--font-main);
-    background-color: var(--bg-color); /* Solid light/dark background */
-    color: var(--text-color);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
     margin: 0;
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-body);
+    color: var(--text-main);
+    height: 100vh;
+    display: flex;
+    font-size: var(--font-base);
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* --- Layout --- */
+.main-container {
+    display: flex;
+    width: 100%;
+    height: 100%;
     overflow: hidden;
 }
 
-/* --- 4. CHAT CONTAINER --- */
-.chat-container {
-    width: 90%;
-    max-width: 800px;
-    height: 90vh;
-    background-color: var(--bg-color-alt);
-    border-radius: 20px;
-    box-shadow: 0 10px 40px var(--shadow-color);
-    border: 1px solid var(--border-color);
+/* --- Sidebar --- */
+.sidebar {
+    width: 280px;
+    background-color: var(--bg-sidebar);
+    padding: 20px;
     display: flex;
     flex-direction: column;
+    transition: transform 0.3s ease, width 0.3s ease, padding 0.3s;
+    border-right: 1px solid var(--border-color);
+}
+
+.sidebar.hidden {
+    width: 0;
+    padding: 0 20px; /* Keep padding vertical but hide width */
     overflow: hidden;
+    transform: translateX(-280px); /* Slide out */
+    border: none;
+}
+
+.sidebar-header h2 {
+    color: var(--accent-color);
+    margin-top: 0;
+    font-size: 1.4rem;
+}
+
+.info-box ul {
+    padding-left: 20px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+/* --- Chat Area --- */
+.chat-area {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    background-color: var(--bg-body);
 }
 
 .chat-header {
-    padding: 20px;
-    text-align: center;
-    border-bottom: 1px solid var(--border-color);
-    box-shadow: 0 2px 10px var(--shadow-color);
-    z-index: 10;
+    padding: 15px 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* Sticky header */
 }
 
-/* --- 5. LOGO --- */
-.logo {
-    margin: 0;
-    font-size: 1.5rem;
-    font-weight: 600;
-    /* GJU Blue logo in light mode, White in dark mode */
-    color: var(--gju-blue);
+.left-controls {
+    display: flex;
+    align-items: center;
+    gap: 15px;
 }
 
-@media (prefers-color-scheme: dark) {
-    .logo {
-        color: white; /* White logo in dark mode */
-    }
+.icon-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--text-secondary);
+    padding: 8px;
+    border-radius: 50%;
+    transition: background 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.icon-btn:hover {
+    background-color: var(--input-bg);
 }
 
-
-/* --- 6. CHAT BOX & MESSAGES --- */
-.chat-box {
-    flex-grow: 1;
-    padding: 20px;
+/* --- Messages --- */
+.messages-box {
+    flex: 1;
+    padding: 20px 10%; /* Center the chat a bit more */
     overflow-y: auto;
     display: flex;
     flex-direction: column;
-    gap: 15px;
-    scroll-behavior: smooth;
-}
-
-/* Minimal Scrollbar */
-.chat-box::-webkit-scrollbar {
-    width: 6px;
-}
-.chat-box::-webkit-scrollbar-thumb {
-    background-color: #888;
-    border-radius: 10px;
-}
-@media (prefers-color-scheme: dark) {
-    .chat-box::-webkit-scrollbar-thumb {
-        background-color: #555;
-    }
+    gap: 20px;
 }
 
 .message {
-    padding: 12px 18px;
-    border-radius: 18px;
-    max-width: 75%;
-    line-height: 1.5;
+    display: flex;
+    gap: 15px;
+    max-width: 85%;
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 .user-message {
-    background-color: var(--gju-blue);
-    color: white;
     align-self: flex-end;
-    border-bottom-right-radius: 4px;
+    flex-direction: row-reverse;
 }
-
 .bot-message {
-    background-color: var(--bg-color);
-    color: var(--text-color);
     align-self: flex-start;
-    border: 1px solid var(--border-color);
-    border-bottom-left-radius: 4px;
 }
 
-/* --- 7. CHAT INPUT & SHADOWS --- */
-.chat-input {
+.avatar {
+    font-size: 1.8rem;
+    margin-top: -5px;
+}
+
+/* BUBBLES - The "Box" look */
+.bubble {
+    padding: 16px 22px;
+    border-radius: 18px;
+    line-height: 1.6;
+    font-size: 1rem;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+}
+
+.user-message .bubble {
+    background-color: var(--msg-user-bg);
+    color: var(--msg-user-text);
+    border-bottom-right-radius: 4px; /* Distinct shape */
+}
+
+.bot-message .bubble {
+    background-color: var(--msg-bot-bg);
+    color: var(--msg-bot-text);
+    border-bottom-left-radius: 4px; /* Distinct shape */
+}
+
+/* --- Input Area --- */
+.input-container {
+    padding: 20px 10%;
+    background-color: var(--bg-body);
+}
+
+.input-wrapper {
+    background-color: var(--input-bg);
+    border-radius: 30px;
     display: flex;
-    padding: 20px;
-    border-top: 1px solid var(--border-color);
-    /* Your requested shadow on the text box area */
-    box-shadow: 0 -5px 20px var(--shadow-color);
-    z-index: 10;
+    padding: 8px 15px;
+    align-items: center;
+    border: 1px solid transparent;
+    transition: border 0.3s;
 }
 
-.chat-input input {
-    flex-grow: 1;
-    border: 1px solid var(--border-color);
-    background-color: var(--bg-color);
-    color: var(--text-color);
-    border-radius: 10px;
-    padding: 12px 18px;
-    font-size: 1rem;
-    font-family: var(--font-main);
-    margin-right: 10px;
-    transition: all 0.2s ease;
+.input-wrapper:focus-within {
+    border-color: var(--accent-color);
+    background-color: var(--bg-body);
 }
 
-.chat-input input:focus {
-    outline: none;
-    border-color: var(--gju-blue);
-    /* Purple glow shadow on focus */
-    box-shadow: 0 0 10px 2px var(--gju-purple);
-}
-
-.chat-input button {
-    background-color: var(--gju-blue);
-    color: white;
+input {
+    flex: 1;
+    background: transparent;
     border: none;
-    border-radius: 10px;
-    padding: 12px 20px;
+    padding: 12px;
     font-size: 1rem;
-    font-family: var(--font-main);
-    font-weight: 500;
-    cursor: pointer;
-    transition: all 0.2s ease;
+    color: var(--text-main);
+    outline: none;
 }
 
-.chat-input button:hover {
-    background-color: var(--gju-gold);
-    color: #1a1d23;
-    /* Clear shadow on hover */
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-    transform: scale(1.05);
+#send-btn {
+    background: transparent;
+    border: none;
+    color: var(--accent-color);
+    cursor: pointer;
+    padding: 8px;
 }
+#send-btn:hover {
+    transform: scale(1.1);
+}
+
+.disclaimer {
+    text-align: center;
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    margin-top: 8px;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-thumb { background: #ccc; border-radius: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
