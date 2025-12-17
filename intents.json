@@ -52,7 +52,11 @@
     {
       "tag": "ask_instructor_info",
       "patterns": [
-        "What are the office hours for Dr. Ismail Hababeh?", "Where is Dr. Ismail Hababeh's office?", "Tell me about Prof. Feras Al-Hawari", "What is the email for Dr. Ala’ Khalifeh?", "Phone number for Dr. Amani Abu Jabal", "How can I contact my professor?", "Who teaches Data Structures?", "Where can I find Dr. Abdullah Alfarrarjeh?", "is Dr. Rami Alazrai on leave?", "Dr. Ismail Hababeh contact info", "Prof. Feras Al-Hawari details", "office location for Dr. Amani", "office of samir nofal", "find samir nofal office", "where is instructor samir nofal located?", "location of dr ammar office", "what building is prof Feras in?", "instructor info for Dr. Ismail Hababeh", "who is Dr. Al-Mahmoud?",
+        "Where is the Dean?",
+        "Who is the Dean?",
+        "Dean's office",
+        "Where is the head of department?",
+        "Chairman office","What are the office hours for Dr. Ismail Hababeh?", "Where is Dr. Ismail Hababeh's office?", "Tell me about Prof. Feras Al-Hawari", "What is the email for Dr. Ala’ Khalifeh?", "Phone number for Dr. Amani Abu Jabal", "How can I contact my professor?", "Who teaches Data Structures?", "Where can I find Dr. Abdullah Alfarrarjeh?", "is Dr. Rami Alazrai on leave?", "Dr. Ismail Hababeh contact info", "Prof. Feras Al-Hawari details", "office location for Dr. Amani", "office of samir nofal", "find samir nofal office", "where is instructor samir nofal located?", "location of dr ammar office", "what building is prof Feras in?", "instructor info for Dr. Ismail Hababeh", "who is Dr. Al-Mahmoud?",
         "professor amani", "instructor hababeh", "dr nofal info", "amani", "amani abu jabal", "contact prof ayoub", "details about instructor hawawsheh", "who is prof zeidan?"
       ],
       "responses": ["Let me check that instructor's details for you... 🔍","Just a moment, I’ll pull up that instructor’s contact info and office details.","Sure, I'm looking up that instructor's details now...","I can help you find that. Which instructor are you looking for?"]
@@ -172,12 +176,27 @@
     },
     {
       "tag": "unknown",
-      "patterns": ["blablabla","asdfghjkl","??","idk what to ask","...","tell me a joke","what's the weather like?","random string of text","lalala","???","---"],
+      "patterns": ["blablabla","asdfghjkl","??","idk what to ask","...","random string of text","lalala","???","---"],
       "responses": ["Hmm, I didn’t quite catch that. 🤔 Could you rephrase it? Remember, I'm best with GJU-related questions.","I’m not sure I understand. Can you ask in another way? \n(Tip: You can type 'help' to see what I can do!)","My apologies, my expertise is in GJU courses, instructors, and study plans. I can't help with that request."]
     },
     {
       "tag": "love",
       "patterns": ["i love you","nhebek barcha","je t'aime "],
-      "responses": ["ME TOO !" ,"hatena nhebek ","love you more "]}
+      "responses": ["ME TOO !" ,"hatena nhebek ","love you more "]},
+      {
+  
+      "tag": "humor",
+      "patterns": [
+          "tell me a joke",
+          "make me laugh",
+          "say something funny",
+          "joke",
+          "funny",
+          "do you know a joke?",
+          "cheer me up"
+        ],
+
+      "responses": ["Why did the developer go broke? Because he used up all his cache!"]
+    }
   ]
 }

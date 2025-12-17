@@ -12,7 +12,7 @@ MAX_LEN = 50
 os.makedirs("bert_intent_model", exist_ok=True)
 
 # 2. Load Data
-with open('intents.json', 'r') as f:
+with open('intents.json', 'r', encoding='utf-8') as f:
     data = json.load(f)
 
 patterns = []
@@ -38,7 +38,13 @@ encodings = tokenizer(patterns, truncation=True, padding='max_length', max_lengt
 dataset = tf.data.Dataset.from_tensor_slices((dict(encodings), labels)).shuffle(100).batch(8)
 
 # 5. Train
-model = TFAutoModelForSequenceClassification.from_pretrained(MODEL_NAME, num_labels=num_classes)
+print("Downloading and loading model...")
+model = TFAutoModelForSequenceClassification.from_pretrained(
+    MODEL_NAME,
+    num_labels=num_classes,
+    use_safetensors=False  # <--- THIS IS THE KEY FIX
+)
+
 optimizer = tf.keras.optimizers.Adam(learning_rate=5e-5)
 loss = tf.keras.losses.SparseCategoricalCrossentropy(from_logits=True)
 model.compile(optimizer=optimizer, loss=loss, metrics=['accuracy'])
