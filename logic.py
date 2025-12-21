@@ -119,7 +119,7 @@ class AIModel:
             tag = self.label_encoder.inverse_transform([pred_index])[0]
             
             # Confidence Threshold
-            if confidence < 0.6: 
+            if confidence < 0.35: 
                 return 'unknown', confidence
                 
             return tag, confidence
