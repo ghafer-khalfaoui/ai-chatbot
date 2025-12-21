@@ -1,4 +1,5 @@
 import mysql.connector # type: ignore
+import time
 import re
 import difflib
 import logging
@@ -100,6 +101,12 @@ class AIModel:
             return 'greeting', 1.0
         if any(w in text_lower for w in ["bye", "goodbye", "quit", "exit"]):
             return 'goodbye', 1.0
+        if text_lower in ["yes", "yep", "yeah", "sure", "ok", "okay", "please", "do it"]:
+            return 'affirm', 1.0
+            
+        # [NEW] Denial (No)
+        if text_lower in ["no", "nope", "nah", "cancel", "stop", "nevermind"]:
+            return 'deny', 1.0
 
         # --- LAYER 2: The BERT Brain (Deep Thinking) ---
         if not self.loaded: return None, 0.0
@@ -142,20 +149,14 @@ class CourseRepository:
             return None
 
     def normalize_code(self, text):
-        # 1. Regex Search: Best for extracting "CS 116" from a sentence like "Tell me about CS 116"
         match = re.search(r'\b(cs|ce|ee|ie|math|engl|arb|gerl|mils|ne)\s*(\d{3,5}|0099|0098|100)\b', text.lower())
         if match:
             return f"{match.group(1).upper()}{match.group(2)}"
-        
-        # 2. Fallback: Handles "cs116" (no spaces) or "math-101"
-        # But we must prevent it from turning "Hello world" into "HELLOWORLD"
+            
         cleaned = re.sub(r'[^a-zA-Z0-9]', '', text).upper()
-        
-        # RULE: A valid course code must be 5-9 characters long AND contain at least one number.
-        # e.g., "CS116" is valid. "PREREQUISITES" (no numbers) is NOT.
+        # Only accept if it looks like a course (has number, correct length)
         if 5 <= len(cleaned) <= 9 and any(char.isdigit() for char in cleaned):
              return cleaned
-             
         return None
 
     def get_all_courses_dict(self):
@@ -283,10 +284,14 @@ class CourseRepository:
 
 # --- 3. Context Manager ---
 class ContextManager:
+    TIMEOUT_SECONDS = 30  #  (10 minutes)
+
     def __init__(self):
         self.sessions = {}
 
     def get_context(self, user_id):
+        current_time = time.time()
+
         if user_id not in self.sessions:
             self.sessions[user_id] = {
                 'status': 'idle',
@@ -294,8 +299,21 @@ class ContextManager:
                 'passed_courses': set(),
                 'target_course': None,
                 'last_entity': {'type': None, 'value': None},
+                'last_interaction': current_time,
+                'pending_intent': None
             }
-        return self.sessions[user_id]
+
+        ctx = self.sessions[user_id]
+
+        # ✅ NOW THIS WORKS
+        if current_time - ctx.get('last_interaction', 0) > self.TIMEOUT_SECONDS:
+            ctx['status'] = 'idle'
+            ctx['target_course'] = None
+            ctx['pending_intent'] = None
+
+        ctx['last_interaction'] = current_time
+        return ctx
+
 
     def update_passed_courses(self, user_id, text_input):
         ctx = self.get_context(user_id)
