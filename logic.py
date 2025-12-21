@@ -8,8 +8,8 @@ import json
 import pickle
 from mysql.connector import pooling
 import numpy as np
-import tensorflow as tf
-from transformers import AutoTokenizer, TFAutoModelForSequenceClassification
+import torch # <--- CHANGED: PyTorch
+from transformers import AutoTokenizer, AutoModelForSequenceClassification 
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -17,13 +17,13 @@ load_dotenv()
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger("LogicLayer")
 
+# Database Configuration
 dbconfig = {
     "database": os.getenv("DB_NAME", "chatbot_db"),
     "user":     os.getenv("DB_USER", "root"),
     "password": os.getenv("DB_PASS", ""),
     "host":     os.getenv("DB_HOST", "localhost")
 }
-
 
 try:
     connection_pool = pooling.MySQLConnectionPool(
@@ -38,123 +38,32 @@ except Exception as e:
     connection_pool = None
 
 
-
-# --- 1. AI/Model Layer ---
+# --- 1. AI/Model Layer (Back-up Class) ---
 class AIModel:
     def __init__(self, model_dir="bert_intent_model"):
-        self.tokenizer = None
-        self.model = None
-        self.label_encoder = None
-        self.max_len = 50
-        self.intents = {}
-        self.loaded = False
-        self._load_resources(model_dir)
+        # We generally use the one in app.py, but this is good for testing logic.py alone
+        pass 
 
-    def _load_resources(self, model_dir):
-        try:
-            if os.path.isdir(model_dir):
-                self.tokenizer = AutoTokenizer.from_pretrained(model_dir)
-                # FIX: Force use_safetensors=False to match training and avoid Windows errors
-                self.model = TFAutoModelForSequenceClassification.from_pretrained(
-                    model_dir, 
-                    use_safetensors=False
-                )
-                
-                with open(os.path.join(model_dir, 'label_encoder.pickle'), 'rb') as f:
-                    self.label_encoder = pickle.load(f)
-                
-                with open(os.path.join(model_dir, 'max_len.json'), 'r') as f:
-                    self.max_len = json.load(f)['max_len']
-                
-                with open('intents.json', 'r', encoding='utf-8') as f:
-                    self.intents = json.load(f)
-                    
-                self.loaded = True
-                logger.info("✅ BERT Model and resources loaded successfully.")
-            else:
-                logger.warning(f"⚠️ Model directory {model_dir} not found. Please run train_model.py first.")
-        except Exception as e:
-            logger.error(f"Failed to load AI models: {e}")
-
-    def predict_intent(self, text):
-        # --- LAYER 1: Rule-Based Shortcuts (The "Reflexes") ---
-        text_lower = text.lower()
-        
-        # 1. Prerequisite Checks
-        if "prereq" in text_lower or "pre-req" in text_lower or "prerequisite" in text_lower:
-            return 'ask_prereqs', 1.0
-            
-        # 2. Eligibility Checks
-        if "can i take" in text_lower or "eligible" in text_lower or "am i allowed" in text_lower:
-            return 'check_eligibility', 1.0
-
-        # 3. Instructor/Office Checks
-        if "who teaches" in text_lower or "professor" in text_lower or "instructor" in text_lower or "office" in text_lower or "where is dr" in text_lower:
-            return 'ask_instructor_info', 1.0
-            
-        # 4. Humor
-        if any(w in text_lower for w in ["joke", "laugh", "funny", "humor"]):
-            return 'humor', 1.0
-            
-        # 5. Greetings/Exit
-        if any(w in text_lower for w in ["hi", "hello", "hey", "greetings"]):
-            return 'greeting', 1.0
-        if any(w in text_lower for w in ["bye", "goodbye", "quit", "exit"]):
-            return 'goodbye', 1.0
-        if text_lower in ["yes", "yep", "yeah", "sure", "ok", "okay", "please", "do it"]:
-            return 'affirm', 1.0
-            
-        # [NEW] Denial (No)
-        if text_lower in ["no", "nope", "nah", "cancel", "stop", "nevermind"]:
-            return 'deny', 1.0
-
-        # --- LAYER 2: The BERT Brain (Deep Thinking) ---
-        if not self.loaded: return None, 0.0
-        try:
-            inputs = self.tokenizer(text, return_tensors="tf", truncation=True, padding='max_length', max_length=self.max_len)
-            logits = self.model(inputs).logits
-            probs = tf.nn.softmax(logits, axis=-1).numpy()[0]
-            pred_index = np.argmax(probs)
-            confidence = probs[pred_index]
-            tag = self.label_encoder.inverse_transform([pred_index])[0]
-            
-            # Confidence Threshold
-            if confidence < 0.35: 
-                return 'unknown', confidence
-                
-            return tag, confidence
-        except Exception as e:
-            logger.error(f"Prediction error: {e}")
-            return None, 0.0
-
-    def get_response_for_tag(self, tag):
-        for intent in self.intents.get('intents', []):
-            if intent['tag'] == tag:
-                import random
-                return random.choice(intent['responses'])
-        return None
 
 # --- 2. Database Layer ---
 class CourseRepository:
     def get_connection(self):
         try:
-            if not connection_pool:
-                # logger.error("Pool not initialized.") 
-                return None
+            if not connection_pool: return None
             connection = connection_pool.get_connection()
-            if connection.is_connected():
-                return connection
+            if connection.is_connected(): return connection
         except Exception as err:
             logger.error(f"Pool Error: {err}")
             return None
 
     def normalize_code(self, text):
+        # 1. Regex Search: Best for extracting "CS 116" from a sentence
         match = re.search(r'\b(cs|ce|ee|ie|math|engl|arb|gerl|mils|ne)\s*(\d{3,5}|0099|0098|100)\b', text.lower())
         if match:
             return f"{match.group(1).upper()}{match.group(2)}"
-            
+        
+        # 2. Fallback: Handles "cs116" (no spaces)
         cleaned = re.sub(r'[^a-zA-Z0-9]', '', text).upper()
-        # Only accept if it looks like a course (has number, correct length)
         if 5 <= len(cleaned) <= 9 and any(char.isdigit() for char in cleaned):
              return cleaned
         return None
@@ -167,6 +76,7 @@ class CourseRepository:
             cursor.execute("SELECT * FROM courses")
             courses = {c['course_code']: c for c in cursor.fetchall()}
             
+            # Add dummy German courses if missing (common issue)
             german_codes = ['GERL101', 'GERL102', 'GERL201', 'GERL202', 'GERL301', 'GERL302']
             for g in german_codes:
                 if not any(g in k for k in courses.keys()):
@@ -210,30 +120,28 @@ class CourseRepository:
         conn = self.get_connection()
         if not conn: return None
         
+        # Stop words to ignore
         stop_words = {"who", "is", "dr", "dr.", "prof", "prof.", "professor", "doctor", "where", "office", "email", "contact", "info", "the", "of", "tell", "me", "about"}
         words = re.findall(r'\b\w+\b', user_text.lower())
         search_terms = [w for w in words if w not in stop_words]
         
         if not search_terms: return None
-        search_query = search_terms[-1]
+        search_query = search_terms[-1] # Try the last significant word (e.g. "Hababeh")
 
         try:
             cursor = conn.cursor(dictionary=True)
-            
-            # Prioritized Search: Keywords first, then Name
             query = """
                 SELECT * FROM instructors 
                 WHERE LOWER(name) LIKE %s 
                 OR LOWER(keywords) LIKE %s
-                ORDER BY LENGTH(name) ASC, LENGTH(keywords) ASC
             """
             param = f"%{search_query}%"
             cursor.execute(query, (param, param))
             results = cursor.fetchall()
             
-            if results:
-                return results[0] 
+            if results: return results[0] 
             
+            # If SQL fails, try Python fuzzy match
             cursor.execute("SELECT * FROM instructors")
             all_instr = cursor.fetchall()
             names = [i['name'] for i in all_instr]
@@ -245,7 +153,6 @@ class CourseRepository:
         finally:
             if conn.is_connected(): conn.close()
             
-
     def get_course_attributes(self):
         conn = self.get_connection()
         if not conn: return {}
@@ -258,7 +165,6 @@ class CourseRepository:
                 'Cybersecurity': {'reqs': set(), 'electives': set()}
             }
         }
-        
         try:
             cursor = conn.cursor(dictionary=True)
             cursor.execute("SELECT * FROM course_attributes")
@@ -277,14 +183,14 @@ class CourseRepository:
                 elif attr_type == 'ELECTIVE':
                     if track in attributes['tracks']:
                         attributes['tracks'][track]['electives'].add(code)
-            
             return attributes
         finally:
             if conn.is_connected(): conn.close()
 
+
 # --- 3. Context Manager ---
 class ContextManager:
-    TIMEOUT_SECONDS = 30  #  (10 minutes)
+    TIMEOUT_SECONDS = 300  # <--- CHANGED: 5 Minutes (was 30s)
 
     def __init__(self):
         self.sessions = {}
@@ -305,8 +211,8 @@ class ContextManager:
 
         ctx = self.sessions[user_id]
 
-        # ✅ NOW THIS WORKS
         if current_time - ctx.get('last_interaction', 0) > self.TIMEOUT_SECONDS:
+            # Reset only short-term status, try to keep data
             ctx['status'] = 'idle'
             ctx['target_course'] = None
             ctx['pending_intent'] = None
@@ -314,13 +220,13 @@ class ContextManager:
         ctx['last_interaction'] = current_time
         return ctx
 
-
     def update_passed_courses(self, user_id, text_input):
         ctx = self.get_context(user_id)
         codes = re.findall(r'\b[A-Z]{2,4}\s?\d{3,5}\b', text_input.upper())
         clean_list = [re.sub(r'[^a-zA-Z0-9]', '', c).upper() for c in codes]
         if clean_list:
             ctx['passed_courses'].update(clean_list)
+            # Add remedial by default
             ctx['passed_courses'].update({'ARB0099', 'ENGL0098', 'ENGL0099', 'MATH0099'})
         return clean_list
 
@@ -343,6 +249,7 @@ class ContextManager:
         ctx['track'] = None
         ctx['passed_courses'] = set()
         ctx['target_course'] = None
+
 
 # --- 4. Advisor Logic ---
 class AcademicAdvisor:
